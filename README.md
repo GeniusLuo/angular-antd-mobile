@@ -1,5 +1,8 @@
 # AngularAntdMobile
-This project use the antd mobile ui. 
+This project use the NG-ZORRO-MOBILE ui. 
+
+For more detail, please go to the http://ng.mobile.ant.design/#/docs/getting-started/zh
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
 ## Development server
