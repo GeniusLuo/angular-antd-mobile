@@ -1,0 +1,23 @@
+<!--新闻公告页面-->
+<div class="news-bulletins">
+  <div class="tabs">
+    <div class="news" [class.active]="!tabIdx" (click)="tabsClick(0)">新闻</div>
+    <div class="bulletins" [class.active]="tabIdx" (click)="tabsClick(1)">公告</div>
+    <div class="icon">
+      <Icon [type]="'check'"></Icon>
+    </div>
+  </div>
+  <WhiteSpace style="background: #eee"></WhiteSpace>
+  <div class="container"
+       (touchstart)="touchstart($event)"
+       (touchend)="touchend($event)">
+    <div class="news-details" [@inOut]="!tabIdx ? 'in' : 'out'">
+      <app-news-box *ngFor="let news of newsArray" [news]="news" [routerLink]="['/news/details']"></app-news-box>
+    </div>
+    <div class="bulletins-details" [@outIn]="tabIdx ? 'in' : 'out'">
+      <app-news-box *ngFor="let news of newsArray" [news]="news"></app-news-box>
+    </div>
+  </div>
+</div>
+
+

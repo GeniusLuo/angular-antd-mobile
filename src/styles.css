@@ -1,1 +1,123 @@
 /* You can add global styles to this file, and also import other style files */
+/*禁止页面复制*/
+* {
+    -webkit-touch-callout: none; /*系统默认菜单被禁用*/
+    -webkit-user-select: none; /*webkit浏览器*/ /*早期浏览器*/
+    -moz-user-select: none; /*火狐*/
+    -ms-user-select: none; /*IE10*/
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling: auto;
+}
+
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Microsoft-Yahei", Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+ul, li {
+    list-style: none;
+}
+
+@media only screen and (max-width: 1080px), only screen and (max-device-width: 1080px) {
+    html, body {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 960px), only screen and (max-device-width: 960px) {
+    html, body {
+        font-size: 26.666666666666664px;
+    }
+}
+
+@media only screen and (max-width: 800px), only screen and (max-device-width: 800px) {
+    html, body {
+        font-size: 22.22222222222222px;
+    }
+}
+
+@media only screen and (max-width: 720px), only screen and (max-device-width: 720px) {
+    html, body {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 640px), only screen and (max-device-width: 640px) {
+    html, body {
+        font-size: 17.77777777777778px;
+    }
+}
+
+@media only screen and (max-width: 600px), only screen and (max-device-width: 600px) {
+    html, body {
+        font-size: 16.666666666666668px;
+    }
+}
+
+@media only screen and (max-width: 540px), only screen and (max-device-width: 540px) {
+    html, body {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+    html, body {
+        font-size: 13.333333333333332px;
+    }
+}
+
+@media only screen and (max-width: 414px), only screen and (max-device-width: 414px) {
+    html, body {
+        font-size: 11.5px;
+    }
+}
+
+@media only screen and (max-width: 400px), only screen and (max-device-width: 400px) {
+    html, body {
+        font-size: 11.11111111111111px;
+    }
+}
+
+@media only screen and (max-width: 375px), only screen and (max-device-width: 375px) {
+    html, body {
+        font-size: 10.416666666666668px;
+    }
+}
+
+@media only screen and (max-width: 360px), only screen and (max-device-width: 360px) {
+    html, body {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 320px), only screen and (max-device-width: 320px) {
+    html, body {
+        font-size: 8.88888888888889px;
+    }
+}
+
+@media only screen and (max-width: 240px), only screen and (max-device-width: 240px) {
+    html, body {
+        font-size: 6.666666666666666px;
+    }
+}
