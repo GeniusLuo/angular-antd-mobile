@@ -1,4 +1,5 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {News} from '../../class/news';
 
 
 @Component({
@@ -8,12 +9,26 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class NewsBoxComponent implements OnInit {
     @Input()
-    news;
+    news: News;
+
+    @Output()
+    private handleDelete: EventEmitter<number> = new EventEmitter();
+
+    @Output()
+    private handleImgBoxTap: EventEmitter<number> = new EventEmitter();
 
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    delete(id: number) { // click delete button
+        this.handleDelete.emit(id); // send the id or number to identify the news
+    }
+
+    imgBoxTap(id: number) {
+        this.handleImgBoxTap.emit(id);
     }
 
 }

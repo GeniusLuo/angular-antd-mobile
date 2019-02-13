@@ -1,11 +1,11 @@
 <div class="news-item">
   <h3 class="title">{{news.title}}</h3>
-  <div class="img-box">
+  <div class="img-box" (click)="imgBoxTap(news.id)">
     <img [src]="news.imgUrl">
   </div>
   <div class="text-info">
-    <span class="time">{{news.time}} {{news.owner}}</span>
+    <span class="time">{{news.date}} {{news.owner}}</span>
     <span class="read-times">阅读{{news.readTime}}次</span>
-    <span class="delete">删除</span>
+    <span class="delete" (click)="delete(news.id)">删除</span>
   </div>
 </div>

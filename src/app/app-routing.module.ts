@@ -6,7 +6,7 @@ import {NewsBulletinsDetailsComponent} from './views/news-bulletins-details/news
 const routes: Routes = [
     {path: '', redirectTo: '/news', pathMatch: 'full'}, // 重定向路由
     {path: 'news', component: NewsBulletinsComponent},
-    {path: 'news/details', component: NewsBulletinsDetailsComponent},
+    {path: 'news/details/:id', component: NewsBulletinsDetailsComponent},
 ];
 
 @NgModule({

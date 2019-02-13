@@ -49,3 +49,11 @@
     background: yellow;
 }
 
+/deep/ .am-modal-title {
+    font-weight: bold;
+}
+
+/deep/ .am-modal-body {
+    color: #000;
+}
+

@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {NewsService} from '../../service/news.service';
+import {ActivatedRoute} from '@angular/router';
+import {News} from '../../class/news';
 
 @Component({
     selector: 'app-news-bulletins-details',
@@ -7,10 +10,25 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NewsBulletinsDetailsComponent implements OnInit {
 
-    constructor() {
+    public news: News;
+
+    constructor(
+        private newsService: NewsService,
+        private routeInfo: ActivatedRoute
+    ) {
     }
 
     ngOnInit() {
+        this.getNews();
+    }
+
+    getNews() {
+        const id = Number(this.routeInfo.snapshot.params.id);
+        this.news = this.newsService.getNewsById(id);
+    }
+
+    inform() {
+        console.log('一键通知');
     }
 
 }

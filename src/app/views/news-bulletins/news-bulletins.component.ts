@@ -1,12 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {News} from '../../../class/news';
-import {animations} from '../../../animations/animations';
+import {News} from '../../class/news';
+import {animations} from '../../animations/animations';
+import {Modal, Toast} from 'ng-zorro-antd-mobile';
+import {Router} from '@angular/router';
+import {NewsService} from '../../service/news.service';
 
 @Component({
     selector: 'app-news-bulletins',
     templateUrl: './news-bulletins.component.html',
     styleUrls: ['./news-bulletins.component.css'],
     animations: animations,
+    providers: [Toast]
 })
 export class NewsBulletinsComponent implements OnInit {
 
@@ -17,16 +21,18 @@ export class NewsBulletinsComponent implements OnInit {
         y: number
     };
 
-    newsArray: object[] = [
-        new News('标题', 'https://via.placeholder.com/300x200', '2019-02-11', 'GeniusLuo', 5),
-        new News('标题2', 'https://via.placeholder.com/300x200', '2019-02-11', 'GeniusLuo', 2),
-        new News('标题2', 'https://via.placeholder.com/300x200', '2019-02-11', 'GeniusLuo', 2),
-    ];
+    newsArray: News[];
 
-    constructor() {
+    constructor(
+        private _modal: Modal,
+        private _toast: Toast,
+        private route: Router,
+        private newsService: NewsService
+    ) {
     }
 
     ngOnInit() {
+        this.getNews();
     }
 
     tabsClick(idx) { // tab标签栏切换
@@ -50,5 +56,33 @@ export class NewsBulletinsComponent implements OnInit {
                 this.tabIdx = 0;
             }
         }
+    }
+
+    delete(id: number) { // confirm to delete the news of id
+        Modal.alert('确认消息', '您确定要删除数据？删除后将无法找回！', [
+            {
+                text: '否',
+                onPress: () => console.log('cancel'),
+                style: {
+                    color: '#108ee9'
+                }
+            },
+            {
+                text: '是',
+                onPress: () => console.log('confirm delete news ' + id),
+                style: {
+                    color: '#108ee9',
+                }
+            }
+        ]);
+    }
+
+    ImgBoxTap(id: number) {
+        this.route.navigate(['/news/details', id]);
+    }
+
+    getNews() {
+        this.newsService.getNews()
+            .subscribe(news => this.newsArray = news);
     }
 }

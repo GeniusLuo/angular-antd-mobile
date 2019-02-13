@@ -1,3 +1,20 @@
-<p>
-  news-bulletins-details works!
-</p>
+<div class="news-bulletins-details">
+  <div class="container">
+    <h2 class="title">{{news.title}}</h2>
+    <div class="time-owner">
+      <span class="time">{{news.date}} {{news.time}}</span>
+      <span class="owner">发布人{{news.owner}}</span>
+    </div>
+    <div class="content">{{news.content}}</div>
+    <div class="readTime">阅读{{news.readTime}}次</div>
+  </div>
+
+  <div Button
+       style="width: 10rem; margin: 3rem auto; font-size: 1.5rem;"
+       [type]="'primary'"
+       (onClick)="inform()">一键通知</div>
+
+  <div>阅读量....</div>
+
+</div>
+

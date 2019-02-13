@@ -12,10 +12,16 @@
        (touchstart)="touchstart($event)"
        (touchend)="touchend($event)">
     <div class="news-details" [@inOut]="!tabIdx ? 'in' : 'out'">
-      <app-news-box *ngFor="let news of newsArray" [news]="news" [routerLink]="['/news/details']"></app-news-box>
+      <app-news-box *ngFor="let news of newsArray"
+                    [news]="news"
+                    (handleDelete)="delete($event)"
+                    (handleImgBoxTap)="ImgBoxTap($event)"></app-news-box>
     </div>
     <div class="bulletins-details" [@outIn]="tabIdx ? 'in' : 'out'">
-      <app-news-box *ngFor="let news of newsArray" [news]="news"></app-news-box>
+      <app-news-box *ngFor="let news of newsArray"
+                    [news]="news"
+                    (handleDelete)="delete($event)"
+                    (handleImgBoxTap)="ImgBoxTap($event)"></app-news-box>
     </div>
   </div>
 </div>
