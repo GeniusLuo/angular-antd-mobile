@@ -3,13 +3,15 @@ import {News} from '../class/news';
 import {Observable, of} from 'rxjs';
 import {newsArray} from '../mock/mock-news';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, map, tap} from 'rxjs/operators';
+import Mock from 'mockjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class NewsService {
 
-    private newsUrl = ''; // URL to web api
+    private newsUrl = 'hello.json'; // URL to web api
 
     private httpOptions: object = {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,11 +21,11 @@ export class NewsService {
     }
 
     getNews(): Observable<News[]> {
-        // return this.http.get<News[]>(this.newsUrl)
-        //     .pipe(
-        //         tap(() => console.log('fetched News'))
-        //     );
-        return of(newsArray);
+        return this.http.get<News[]>(this.newsUrl)
+            .pipe(
+                tap(() => console.log('fetched News'))
+            );
+        // return of(newsArray);
     }
 
     getMoreNews(): Observable<News> {
