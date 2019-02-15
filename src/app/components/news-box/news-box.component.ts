@@ -12,7 +12,7 @@ export class NewsBoxComponent implements OnInit {
     news: News;
 
     @Output()
-    private handleDelete: EventEmitter<number> = new EventEmitter();
+    private handleDelete: EventEmitter<News> = new EventEmitter();
 
     @Output()
     private handleImgBoxTap: EventEmitter<number> = new EventEmitter();
@@ -23,8 +23,8 @@ export class NewsBoxComponent implements OnInit {
     ngOnInit() {
     }
 
-    delete(id: number) { // click delete button
-        this.handleDelete.emit(id); // send the id or number to identify the news
+    delete(news: News) { // click delete button
+        this.handleDelete.emit(news); // send the id or number to identify the news
     }
 
     imgBoxTap(id: number) {

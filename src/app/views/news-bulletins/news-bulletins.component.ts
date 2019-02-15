@@ -23,6 +23,15 @@ export class NewsBulletinsComponent implements OnInit {
 
     newsArray: News[];
 
+    state = {
+        direction: 'up',
+        refreshState: {
+            currentState: 'deactivate',
+            drag: false
+        },
+        height: {height: '100%'}
+    };
+
     constructor(
         private _modal: Modal,
         private _toast: Toast,
@@ -58,7 +67,7 @@ export class NewsBulletinsComponent implements OnInit {
         }
     }
 
-    delete(id: number) { // confirm to delete the news of id
+    delete(news: News) { // confirm to delete the news of id
         Modal.alert('确认消息', '您确定要删除数据？删除后将无法找回！', [
             {
                 text: '否',
@@ -69,7 +78,12 @@ export class NewsBulletinsComponent implements OnInit {
             },
             {
                 text: '是',
-                onPress: () => console.log('confirm delete news ' + id),
+                onPress: () => {
+                    Toast.loading('Loading...', 2000, () => {
+                        this.newsArray = this.newsArray.filter(n => n !== news);
+                        Toast.show('删除成功！', 3000);
+                    });
+                },
                 style: {
                     color: '#108ee9',
                 }
@@ -83,6 +97,11 @@ export class NewsBulletinsComponent implements OnInit {
 
     getNews() {
         this.newsService.getNews()
-            .subscribe(news => this.newsArray = news);
+            .subscribe(news => this.newsArray = news); // 这个地方不是赋值而是把内存地址指过来了
+    }
+
+    pullToRefresh() {
+        this.newsService.getMoreNews()
+            .subscribe(news => this.newsArray.push(news));
     }
 }

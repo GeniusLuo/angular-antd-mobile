@@ -3,7 +3,7 @@
   <div class="tabs">
     <div class="news" [class.active]="!tabIdx" (click)="tabsClick(0)">新闻</div>
     <div class="bulletins" [class.active]="tabIdx" (click)="tabsClick(1)">公告</div>
-    <div class="icon">
+    <div class="icon" [routerLink]="['/release']">
       <Icon [type]="'check'"></Icon>
     </div>
   </div>
@@ -12,16 +12,26 @@
        (touchstart)="touchstart($event)"
        (touchend)="touchend($event)">
     <div class="news-details" [@inOut]="!tabIdx ? 'in' : 'out'">
-      <app-news-box *ngFor="let news of newsArray"
-                    [news]="news"
-                    (handleDelete)="delete($event)"
-                    (handleImgBoxTap)="ImgBoxTap($event)"></app-news-box>
+      <PullToRefresh [ngStyle]="state.height"
+                     [direction]="state.direction"
+                     [(ngModel)]="state.refreshState"
+                     (onRefresh)="pullToRefresh($event)">
+        <app-news-box *ngFor="let news of newsArray"
+                      [news]="news"
+                      (handleDelete)="delete($event)"
+                      (handleImgBoxTap)="ImgBoxTap($event)"></app-news-box>
+      </PullToRefresh>
     </div>
     <div class="bulletins-details" [@outIn]="tabIdx ? 'in' : 'out'">
-      <app-news-box *ngFor="let news of newsArray"
-                    [news]="news"
-                    (handleDelete)="delete($event)"
-                    (handleImgBoxTap)="ImgBoxTap($event)"></app-news-box>
+      <PullToRefresh [ngStyle]="state.height"
+                     [direction]="state.direction"
+                     [(ngModel)]="state.refreshState"
+                     (onRefresh)="pullToRefresh($event)">
+        <app-news-box *ngFor="let news of newsArray"
+                      [news]="news"
+                      (handleDelete)="delete($event)"
+                      (handleImgBoxTap)="ImgBoxTap($event)"></app-news-box>
+      </PullToRefresh>
     </div>
   </div>
 </div>

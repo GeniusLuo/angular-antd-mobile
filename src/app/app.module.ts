@@ -10,13 +10,15 @@ import {NgZorroAntdMobileModule, ModalServiceComponent, ToastComponent} from 'ng
 import {NewsBulletinsComponent} from './views/news-bulletins/news-bulletins.component';
 import {NewsBoxComponent} from './components/news-box/news-box.component';
 import {NewsBulletinsDetailsComponent} from './views/news-bulletins-details/news-bulletins-details.component';
+import { NewsBulletinsReleaseComponent } from './views/news-bulletins-release/news-bulletins-release.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NewsBulletinsComponent,
         NewsBoxComponent,
-        NewsBulletinsDetailsComponent
+        NewsBulletinsDetailsComponent,
+        NewsBulletinsReleaseComponent
     ],
     imports: [
         BrowserModule,
