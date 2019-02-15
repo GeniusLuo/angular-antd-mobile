@@ -5,10 +5,11 @@ import {NewsBulletinsDetailsComponent} from './views/news-bulletins-details/news
 import {NewsBulletinsReleaseComponent} from './views/news-bulletins-release/news-bulletins-release.component';
 
 const routes: Routes = [
-    {path: '', redirectTo: '/news', pathMatch: 'full'}, // 重定向路由
     {path: 'news', component: NewsBulletinsComponent},
     {path: 'news/details/:id', component: NewsBulletinsDetailsComponent},
-    {path: 'release', component: NewsBulletinsReleaseComponent}
+    {path: 'release', component: NewsBulletinsReleaseComponent},
+    {path: '', redirectTo: '/news', pathMatch: 'full'}, // 重定向路由
+    {path: '**', component: NewsBulletinsComponent} // 404页面
 ];
 
 @NgModule({

@@ -81,7 +81,9 @@ export class NewsBulletinsComponent implements OnInit {
                 onPress: () => {
                     Toast.loading('Loading...', 2000, () => {
                         this.newsArray = this.newsArray.filter(n => n !== news);
-                        Toast.show('删除成功！', 3000);
+                        setTimeout(() => {
+                            Toast.show('删除成功！', 2000);
+                        }, 0);
                     });
                 },
                 style: {

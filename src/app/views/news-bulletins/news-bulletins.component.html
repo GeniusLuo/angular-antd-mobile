@@ -15,7 +15,7 @@
       <PullToRefresh [ngStyle]="state.height"
                      [direction]="state.direction"
                      [(ngModel)]="state.refreshState"
-                     (onRefresh)="pullToRefresh($event)">
+                     (onRefresh)="pullToRefresh()">
         <app-news-box *ngFor="let news of newsArray"
                       [news]="news"
                       (handleDelete)="delete($event)"
@@ -26,7 +26,7 @@
       <PullToRefresh [ngStyle]="state.height"
                      [direction]="state.direction"
                      [(ngModel)]="state.refreshState"
-                     (onRefresh)="pullToRefresh($event)">
+                     (onRefresh)="pullToRefresh()">
         <app-news-box *ngFor="let news of newsArray"
                       [news]="news"
                       (handleDelete)="delete($event)"
