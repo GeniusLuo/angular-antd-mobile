@@ -3,6 +3,7 @@
  */
 
 import {News} from '../class/news';
+import Mock from 'mockjs';
 
 export const newsArray: News[] = [
     {
@@ -56,3 +57,7 @@ export const newsArray: News[] = [
         readTime: 8
     }
 ];
+
+for (let i = 0; i < 5; i++) {
+    
+}

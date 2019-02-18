@@ -21,11 +21,11 @@ export class NewsService {
     }
 
     getNews(): Observable<News[]> {
-        return this.http.get<News[]>(this.newsUrl)
-            .pipe(
-                tap(() => console.log('fetched News'))
-            );
-        // return of(newsArray);
+        // return this.http.get<News[]>(this.newsUrl)
+        //     .pipe(
+        //         tap(() => console.log('fetched News'))
+        //     );
+        return of(newsArray);
     }
 
     getMoreNews(): Observable<News> {

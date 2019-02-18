@@ -6,12 +6,12 @@ import {Router} from '@angular/router';
 import {NewsService} from '../../service/news.service';
 import Mock from 'mockjs';
 
-Mock.mock(/\.json/, {
-    'list|1-10': [{
-        'id|+1': 1,
-        'email': '@EMAIL'
-    }]
-});
+// Mock.mock(/\.json/, {
+//     'list|1-10': [{
+//         'id|+1': 1,
+//         'email': '@EMAIL'
+//     }]
+// });
 
 @Component({
     selector: 'app-news-bulletins',
@@ -106,11 +106,11 @@ export class NewsBulletinsComponent implements OnInit {
     }
 
     getNews() {
-       /* this.newsService.getNews()
-            .subscribe(news => this.newsArray = news); // 这个地方不是赋值而是把内存地址指过来了*/
-
         this.newsService.getNews()
-            .subscribe(news => console.log(news)); // 这个地方不是赋值而是把内存地址指过来了
+            .subscribe(news => this.newsArray = news); // 这个地方不是赋值而是把内存地址指过来了
+
+        // this.newsService.getNews()
+        //     .subscribe(news => console.log(news)); // 这个地方不是赋值而是把内存地址指过来了
     }
 
     pullToRefresh() {
