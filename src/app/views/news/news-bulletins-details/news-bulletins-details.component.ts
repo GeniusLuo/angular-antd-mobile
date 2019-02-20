@@ -1,18 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {NewsService} from '../../service/news.service';
+import {NewsService} from '../../../service';
 import {ActivatedRoute} from '@angular/router';
-import {News} from '../../class/news';
+import {NewsDetails} from '../../../class';
 import {Toast} from 'ng-zorro-antd-mobile';
+import {xmlData} from '../../../utils/xmlData';
 
 @Component({
     selector: 'app-news-bulletins-details',
     templateUrl: './news-bulletins-details.component.html',
-    styleUrls: ['./news-bulletins-details.component.css'],
+    styleUrls: ['./news-bulletins-details.component.styl'],
     providers: [Toast]
 })
 export class NewsBulletinsDetailsComponent implements OnInit {
 
-    public news: News;
+    public newsDetails: NewsDetails;
+
+    public showNewsDetails = false;
 
     constructor(
         private newsService: NewsService,
@@ -27,11 +30,18 @@ export class NewsBulletinsDetailsComponent implements OnInit {
 
     getNews() {
         const id = Number(this.routeInfo.snapshot.params.id);
-        this.news = this.newsService.getNewsById(id);
+        this.newsService.getNewsById(id)
+            .subscribe((res) => {
+                const {Code, Data} = xmlData(res);
+                if (Code === 200) {
+                    console.log(Data);
+                    this.showNewsDetails = true;
+                    this.newsDetails = Data;
+                }
+            });
     }
 
     inform() {
-        console.log('一键通知');
         Toast.show('通知成功！', 3000);
     }
 

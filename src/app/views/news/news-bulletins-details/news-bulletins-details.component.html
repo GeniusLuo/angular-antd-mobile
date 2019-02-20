@@ -1,0 +1,27 @@
+<div class="news-bulletins-details" *ngIf="showNewsDetails">
+  <div class="container">
+    <h2 class="title">{{newsDetails.Title}}</h2>
+    <div class="time-owner">
+      <span class="time">{{newsDetails.DatePublish}}</span>
+      <span class="owner">发布人{{newsDetails.Author}}</span>
+    </div>
+    <div class="content">{{newsDetails.Content}}</div>
+    <div class="readTime">阅读{{newsDetails.ReadCount}}次</div>
+  </div>
+
+  <div Button
+       style="width: 10rem; margin: 3rem auto; font-size: 1.5rem;"
+       [type]="'primary'"
+       (onClick)="inform()">
+    一键通知
+  </div>
+
+  <div class="no-read">
+    <span *ngFor="let item of newsDetails.NoReadUsers" [hidden]="!item.UserName">
+      {{item.UserName}}
+    </span>
+    未阅读
+  </div>
+
+</div>
+

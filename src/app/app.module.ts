@@ -7,19 +7,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {NgZorroAntdMobileModule, ModalServiceComponent, ToastComponent} from 'ng-zorro-antd-mobile';
-import {NewsBulletinsComponent} from './views/news-bulletins/news-bulletins.component';
-import {NewsBoxComponent} from './components/news-box/news-box.component';
-import {NewsBulletinsDetailsComponent} from './views/news-bulletins-details/news-bulletins-details.component';
-import { NewsBulletinsReleaseComponent } from './views/news-bulletins-release/news-bulletins-release.component';
+import {newsArr} from './router/news';
+import {ImgSrcErrorDirective} from './directive/img-src-error.directive';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NewsBulletinsComponent,
-        NewsBoxComponent,
-        NewsBulletinsDetailsComponent,
-        NewsBulletinsReleaseComponent
-    ],
+    declarations: [...newsArr, AppComponent, ImgSrcErrorDirective],
     imports: [
         BrowserModule,
         AppRoutingModule,

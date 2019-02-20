@@ -3,17 +3,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-antd-mobile": {
-      "root": "",
+    "wx-global": {
+      "root": "src",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "styl"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-antd-mobile",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,52 +28,48 @@
             ],
             "styles": [
               "node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css",
-              "src/styles.css"
+              "src/styles.styl"
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
-              "namedChunks": false,
+              "namedChunks": true,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
+              "budgets": [{
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-antd-mobile:build"
+            "browserTarget": "wx-global:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-antd-mobile:build:production"
+              "browserTarget": "wx-global:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-antd-mobile:build"
+            "browserTarget": "wx-global:build"
           }
         },
         "test": {
@@ -81,7 +81,7 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": [
               "node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css",
-              "src/styles.css"
+              "src/styles.styl"
             ],
             "scripts": [],
             "assets": [
@@ -104,7 +104,7 @@
         }
       }
     },
-    "angular-antd-mobile-e2e": {
+    "wx-global-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -113,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-antd-mobile:serve"
+            "devServerTarget": "wx-global:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-antd-mobile:serve:production"
+              "devServerTarget": "wx-global:serve:production"
             }
           }
         },
@@ -133,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "angular-antd-mobile"
+  "defaultProject": "wx-global"
 }

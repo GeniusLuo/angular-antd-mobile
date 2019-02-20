@@ -12,25 +12,27 @@
        (touchstart)="touchstart($event)"
        (touchend)="touchend($event)">
     <div class="news-details" [@inOut]="!tabIdx ? 'in' : 'out'">
-      <PullToRefresh [ngStyle]="state.height"
-                     [direction]="state.direction"
-                     [(ngModel)]="state.refreshState"
+      <PullToRefresh [ngStyle]="news.pullState.height"
+                     [direction]="news.pullState.direction"
+                     [(ngModel)]="news.pullState.refreshState"
                      (onRefresh)="pullToRefresh()">
-        <app-news-box *ngFor="let news of newsArray"
+        <app-news-box *ngFor="let news of news.list"
                       [news]="news"
                       (handleDelete)="delete($event)"
                       (handleImgBoxTap)="ImgBoxTap($event)"></app-news-box>
+        <div [hidden]="news.hasMore" class="no-more">没有更多的消息了...</div>
       </PullToRefresh>
     </div>
     <div class="bulletins-details" [@outIn]="tabIdx ? 'in' : 'out'">
-      <PullToRefresh [ngStyle]="state.height"
-                     [direction]="state.direction"
-                     [(ngModel)]="state.refreshState"
+      <PullToRefresh [ngStyle]="bulletins.pullState.height"
+                     [direction]="bulletins.pullState.direction"
+                     [(ngModel)]="bulletins.pullState.refreshState"
                      (onRefresh)="pullToRefresh()">
-        <app-news-box *ngFor="let news of newsArray"
+        <app-news-box *ngFor="let news of bulletins.list"
                       [news]="news"
                       (handleDelete)="delete($event)"
                       (handleImgBoxTap)="ImgBoxTap($event)"></app-news-box>
+        <div [hidden]="bulletins.hasMore" class="no-more">没有更多的消息了...</div>
       </PullToRefresh>
     </div>
   </div>

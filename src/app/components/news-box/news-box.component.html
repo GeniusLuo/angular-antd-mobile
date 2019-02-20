@@ -1,11 +1,11 @@
 <div class="news-item">
-  <h3 class="title">{{news.title}}</h3>
-  <div class="img-box" (click)="imgBoxTap(news.id)">
-    <img [src]="news.imgUrl">
+  <h3 class="title">{{news.Title}}</h3>
+  <div class="img-box" (click)="imgBoxTap(news.Id)">
+    <img [src]="news.TitlePic" appErrSrc="assets/img/error.jpg">
   </div>
   <div class="text-info">
-    <span class="time">{{news.date}} {{news.owner}}</span>
-    <span class="read-times">阅读{{news.readTime}}次</span>
+    <span class="time">{{news.DatePublish.split(' ')[0]}} {{news.Author}}</span>
+    <span class="read-times">阅读{{news.ReadCount}}次</span>
     <span class="delete" (click)="delete(news)">删除</span>
   </div>
 </div>

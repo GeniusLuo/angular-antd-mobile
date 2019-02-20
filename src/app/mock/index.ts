@@ -1,0 +1,1 @@
+export { newsArray } from './news/mock-news'
